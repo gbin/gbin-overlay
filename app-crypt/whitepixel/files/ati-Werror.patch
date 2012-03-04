@@ -1,0 +1,14 @@
+diff -au orig/whitepixel-2/Makefile fixed/whitepixel-2/Makefile
+--- orig/whitepixel-2/Makefile  2010-12-14 12:44:50.000000000 +0100
++++ fixed/whitepixel-2/Makefile 2011-06-21 08:00:16.884112286 +0200
+@@ -1,7 +1,7 @@
+ # Update /usr/local/... to point to the ATI Stream SDK include path
+-CPPFLAGS = -I/usr/local/ati-stream/include
++CPPFLAGS = -I/opt/ati-stream-sdk/include
+ 
+-CFLAGS = -O1 -std=c99 -pedantic -Wextra -Wall -Werror \
++CFLAGS = -O1 -std=c99 -pedantic -Wextra -Wall \
+         -Wno-overlength-strings
+ LDFLAGS = -laticalcl -laticalrt -lm
+ KERNELS = \
+
