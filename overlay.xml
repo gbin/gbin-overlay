@@ -7,6 +7,6 @@
     <owner>
       <email>gbin@gootz.net</email>
     </owner>
-    <source type="git">git@github.com:gbin/gbin-overlay.git</source>
+    <source type="git">git://github.com/gbin/gbin-overlay.git</source>
   </repo>
 </repositories>
