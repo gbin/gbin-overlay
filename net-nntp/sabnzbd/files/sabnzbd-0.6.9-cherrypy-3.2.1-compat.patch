@@ -1,0 +1,33 @@
+diff -Nuarp SABnzbd-0.6.9-ori/SABnzbd.py SABnzbd-0.6.9/SABnzbd.py
+--- SABnzbd-0.6.9-ori/SABnzbd.py	2011-09-10 11:04:42.000000000 +0200
++++ SABnzbd-0.6.9/SABnzbd.py	2011-09-14 04:48:10.000000000 +0200
+@@ -47,6 +47,7 @@ if not cherrypy.__version__.startswith("
+ 
+ from cherrypy import _cpserver
+ from cherrypy import _cpwsgi_server
++from cherrypy.wsgiserver.ssl_pyopenssl import pyOpenSSLAdapter
+ 
+ SQLITE_DLL = True
+ try:
+@@ -1275,16 +1276,12 @@ def main():
+ 
+         if enable_https:
+             if https_port:
+-                # Prepare an extra server for the HTTP port
+-                http_server = _cpwsgi_server.CPWSGIServer()
+-                http_server.bind_addr = (cherryhost, cherryport)
+-                #secure_server.ssl_certificate = https_cert
+-                #secure_server.ssl_private_key = https_key
+-                adapter = _cpserver.ServerAdapter(cherrypy.engine, http_server, http_server.bind_addr)
++                # Prepare an extra server for the HTTPS port
++                https_server = _cpwsgi_server.CPWSGIServer()
++                https_server.bind_addr = (cherryhost, https_port)
++                https_server.ssl_adapter = pyOpenSSLAdapter(https_cert, https_key, None)
++                adapter = _cpserver.ServerAdapter(cherrypy.engine, https_server, https_server.bind_addr)
+                 adapter.subscribe()
+-                cherryport = https_port
+-            cherrypy.config.update({'server.ssl_certificate' : https_cert,
+-                                    'server.ssl_private_key' : https_key })
+ 
+     if no_login:
+         sabnzbd.cfg.username.set('')
