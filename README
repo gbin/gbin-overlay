@@ -30,8 +30,7 @@ Then synchronize layman repo list :
 layman -L
                    
 You should see my repo been displayed in the list.
-                   
-                   
+                                    
 To add the overlay to your local machine : 
                    
 layman -a gbin-overlay
@@ -45,5 +44,6 @@ source /var/lib/layman/make.conf
 To delete it : 
                    
 layman -d gbin-overlay
+
                    
         
