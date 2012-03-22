@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	use net logger
+}
+
+start() {
+	ebegin "Starting oscam"
+	start-stop-daemon --start --group oscam --user oscam \
+		--make-pidfile --pidfile /var/run/oscam.pid \
+		--background --exec oscam
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping oscam"
+	start-stop-daemon --stop --pidfile /var/run/oscam.pid --exec oscam
+	eend $?
+}
