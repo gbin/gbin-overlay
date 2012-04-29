@@ -81,8 +81,9 @@ COMMON_DEPEND="virtual/opengl
         x11-libs/libXinerama
         xrandr? ( x11-libs/libXrandr )
         x11-libs/libXrender
-        <net-wireless/bluez-4.98
-        !media-tv/xbmc"
+        !media-tv/xbmc
+        net-wireless/bluez"
+#        <net-wireless/bluez-4.98
 # The cpluff bundled addon uses gettext which needs CVS ...
 RDEPEND="${COMMON_DEPEND}
         udev? ( sys-fs/udisks sys-power/upower )"
