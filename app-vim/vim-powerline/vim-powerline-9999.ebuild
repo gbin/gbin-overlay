@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/Lokaltog/vim-powerline"
 SRC_URI="https://github.com/Lokaltog/${PN}/tarball/develop/ -> ${P}.tar.gz"
 
 LICENSE="ccs"
-KEYWORDS="amd64"
+KEYWORDS=""
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="Powerline.txt"
