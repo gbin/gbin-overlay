@@ -3,29 +3,7 @@ In order to install this overlay in Gentoo :
 Install layman:
 > emerge app-portage/layman
 
-Edit its config and add our custom overlay repo :
-
-> nano /etc/layman/layman.cfg
-
------------ cut -----------
-
-[...]
-#-----------------------------------------------------------
-# URLs of the remote lists of overlays (one per line) or
-# local overlay definitions
-#
-#overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
-#            http://dev.gentoo.org/~wrobel/layman/global-overlays.xml
-#            http://mydomain.org/my-layman-list.xml
-#            file:///var/lib/layman/my-list.xml
-
-overlays  : http://www.gentoo.org/proj/en/overlays/repositories.xml
-            https://raw.github.com/gbin/gbin-overlay/master/overlay.xml            
-[...]
-            
- ----------- cut -----------
-                  
-Then synchronize layman repo list : 
+Synchronize the layman repo list : 
                    
 layman -L
                    
