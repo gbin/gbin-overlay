@@ -4,22 +4,21 @@
 
 EAPI=4
 
-inherit vim-plugin
+inherit git-2 vim-plugin
 
 DESCRIPTION="The ultimate vim statusline utility"
 HOMEPAGE="https://github.com/Lokaltog/vim-powerline"
-SRC_URI="https://github.com/Lokaltog/${PN}/tarball/develop/ -> ${P}.tar.gz"
+SRC_URI=""
+
+EGIT_REPO_URI="git://github.com/Lokaltog/vim-powerline.git"
+EGIT_PROJECT="vim-powerline"
+EGIT_BRANCH="develop"
 
 LICENSE="ccs"
-KEYWORDS=""
+KEYWORDS="amd64"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="Powerline.txt"
-
-src_unpack() {
-	unpack ${A}
-	mv *-${PN}-* "${S}"
-}
 
 src_prepare() {
 	# Discard unwanted files
