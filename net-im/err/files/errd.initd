@@ -1,0 +1,12 @@
+#!/sbin/runscript
+
+depend() {
+  need net
+}
+
+start() {
+    ebegin "Starting errd..."
+        start-stop-daemon --start --pidfile ${PID_FILE} --exec /usr/bin/python2 -- /usr/bin/err.py -c ${ERR_CONFIG_PATH} -d -p ${ERR_PID_FILE} -u ${ERR_USER} -g ${ERR_GROUP}
+    eend $?
+}
+
