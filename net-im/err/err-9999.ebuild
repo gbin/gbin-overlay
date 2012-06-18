@@ -4,46 +4,38 @@
 
 EAPI=4
 
-SUPPORT_PYTHON_ABIS="1"
+EGIT_REPO_URI="git://github.com/gbin/err.git"
+
 DISTUTILS_SRC_TEST="setup.py"
 
-inherit distutils eutils
-
-EGIT_REPO_URI="git://github.com/gbin/err.git"
-if [ "${PV}" = "9999" ]; then
-		inherit git-2
-fi
-
+SUPPORT_PYTHON_ABIS="1"
+PYTHON_DEPEND="2"
 RESTRICT_PYTHON_ABIS="3.*"
+
+inherit distutils eutils git-2 user
 
 DESCRIPTION="err is a plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable."
 HOMEPAGE="http://gbin.github.com/err/"
 
-if [ "${PV}" != "9999" ]; then
-	SRC_URI="http://pypi.python.org/packages/source/e/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
-fi
-
+SRC_URI=""
+KEYWORDS=""
 LICENSE="GPL-3"
 SLOT="0"
+IUSE=""
 
 DEPEND="dev-python/setuptools"
-RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	python_pkg_setup
-	enewgroup 'err'
-	enewuser 'err' -1 -1 -1 'err'
-}
+RDEPEND="dev-python/xmpppy
+	dev-python/python-daemon
+	dev-python/yapsy"
 
 src_install() {
 	distutils_src_install
 	newinitd "${FILESDIR}"/errd.initd errd
 	newconfd "${FILESDIR}"/errd.confd errd
-	mkdir -p "${D}"etc/err
-	mkdir -p "${D}"var/lib/err
-	mkdir -p "${D}"var/log/err
-	mkdir -p "${D}"var/run/err
+	dodir /etc/err
+	dodir /var/lib/err
+	keepdir /var/log/err
+	keepdir /var/run/err
 	fowners -R err:err /var/lib/err/
 	fowners -R err:err /var/log/err/
 	fowners -R err:err /var/run/err/
@@ -51,3 +43,10 @@ src_install() {
 	newins errbot/config-template.py config.py
 }
 
+pkg_setup() {
+	python_pkg_setup
+	ebegin "Creating err group and user"
+	enewgroup 'err'
+	enewuser 'err' -1 -1 -1 'err'
+	eend ${?}
+}
