@@ -7,7 +7,7 @@ EAPI=4
 DISTUTILS_SRC_TEST="setup.py"
 
 SUPPORT_PYTHON_ABIS="1"
-PYTHON_DEPEND="2"
+PYTHON_DEPEND="2:2.7"
 RESTRICT_PYTHON_ABIS="3.*"
 
 inherit distutils eutils user
@@ -26,25 +26,25 @@ RDEPEND="dev-python/xmpppy
 	dev-python/python-daemon
 	dev-python/yapsy"
 
-src_install() {
-	distutils_src_install
-	newinitd "${FILESDIR}"/errd.initd errd
-	newconfd "${FILESDIR}"/errd.confd errd
-	dodir /etc/err
-	dodir /var/lib/err
-	keepdir /var/log/err
-	keepdir /var/run/err
-	fowners -R err:err /var/lib/err/
-	fowners -R err:err /var/log/err/
-	fowners -R err:err /var/run/err/
-	insinto /etc/err/
-	newins errbot/config-template.py config.py
-}
-
 pkg_setup() {
 	python_pkg_setup
 	ebegin "Creating err group and user"
 	enewgroup 'err'
 	enewuser 'err' -1 -1 -1 'err'
 	eend ${?}
+}
+
+src_install() {
+	distutils_src_install
+	newinitd "${FILESDIR}"/errd.initd errd
+	newconfd "${FILESDIR}"/errd.confd errd
+	dodir /etc/${PN}
+	dodir /var/lib/${PN}
+	keepdir /var/log/${PN}
+	keepdir /var/run/${PN}
+	fowners -R err:err /var/lib/${PN}
+	fowners -R err:err /var/log/${PN}
+	fowners -R err:err /var/run/${PN}
+	insinto /etc/${PN}
+	newins errbot/config-template.py config.py
 }
