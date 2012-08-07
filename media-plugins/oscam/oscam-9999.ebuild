@@ -7,9 +7,9 @@ EAPI=3
 inherit eutils cmake-utils subversion
 
 DESCRIPTION="Open Source Conditional Access Module software, based on MpCS version 0.9d"
-HOMEPAGE="http://streamboard.gmc.to:8001/wiki/"
+HOMEPAGE="http://streamboard.de.vu:8001/wiki/"
 SRC_URI=""
-ESVN_REPO_URI="http://streamboard.gmc.to/svn/oscam/trunk"
+ESVN_REPO_URI="http://streamboard.de.vu/svn/oscam/trunk"
 
 LICENSE=""
 SLOT="0"
