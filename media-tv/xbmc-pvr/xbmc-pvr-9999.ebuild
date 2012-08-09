@@ -26,7 +26,8 @@ SLOT="0"
 IUSE="alsa altivec avahi bluray css debug joystick midi profile pulseaudio rtmp sse sse2 udev vaapi vdpau webserver +xrandr"
 
 COMMON_DEPEND="virtual/opengl
-        app-arch/bzip2
+        dev-libs/tinyxml
+		app-arch/bzip2
         app-arch/unzip
         app-arch/zip
         app-i18n/enca
@@ -110,13 +111,6 @@ src_unpack() {
 }
 
 src_prepare() {
-        # patches for latests revisions of ffmpeg, some functions changed
-        # epatch "${FILESDIR}"/${PN}-9999-ffmpeg-9999.patch
-        # stolen from the aoliynik xbmc-9999 ebuild
-        epatch "${FILESDIR}"/${P}-libpng-1.5.patch #380127
-        epatch "${FILESDIR}"/${P}-libpng-1.5-fix-plt-trn-get.patch
-        #epatch "${FILESDIR}"/${P}-headers.patch #380127
-
         # some dirs ship generated autotools, some dont
         local d
         for d in . lib/{libdvd/lib*/,cpluff,libapetag,libid3tag/libid3tag} xbmc/screensavers/rsxs-* ; do
