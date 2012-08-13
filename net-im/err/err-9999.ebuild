@@ -28,6 +28,7 @@ RDEPEND="dev-python/xmpppy
 	dev-python/python-daemon
 	dev-python/yapsy
 	dev-python/jinja
+  dev-python/flask
 	plugins? ( dev-vcs/git )"
 
 pkg_setup() {
