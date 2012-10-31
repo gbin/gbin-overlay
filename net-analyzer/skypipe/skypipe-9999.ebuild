@@ -24,7 +24,7 @@ LICENSE="MIT"
 SLOT="0"
 
 DEPEND="dev-python/setuptools"
-RDEPEND="dev-python/argparse
+RDEPEND="virtual/python-argparse
 	dev-python/pyzmq
 	dev-python/requests
     dev-python/colorama
