@@ -17,11 +17,11 @@ IUSE="debug test"
 
 RDEPEND="dev-libs/libgcrypt
 	sys-libs/zlib
-	x11-libs/qt-core:4[qt3support]
-	x11-libs/qt-gui:4[qt3support]
+	dev-qt/qtcore
+	dev-qt/qtgui
 "
 DEPEND="${RDEPEND}
-	test? ( x11-libs/qt-test:4 )
+	test? ( dev-libs/qt-test )
 "
 
 src_configure() {
