@@ -25,7 +25,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}.src"
-echo $S
 ABI="x86"
 
 if   use alsa;       then squeak_sound_plugin="ALSA"
