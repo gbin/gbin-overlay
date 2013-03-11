@@ -1,6 +1,6 @@
 In order to install this overlay in Gentoo :
 
-Install layman:
+Install layman if you don't have it already:
 > emerge app-portage/layman
 
 Synchronize the layman repo list : 
@@ -8,20 +8,20 @@ Synchronize the layman repo list :
 layman -L
                    
 You should see my repo been displayed in the list.
-                                    
-To add the overlay to your local machine : 
-                   
-layman -a gbin-overlay
-                   
+
 Then you need to add your layman overlays to your make.conf:
-                   
 > nano /etc/make.conf
-                   
 source /var/lib/layman/make.conf
+                                    
+To add the overlay : 
+                   
+layman -a gbin
+                   
+The packages should be available.                   
                    
 To delete it : 
                    
-layman -d gbin-overlay
+layman -d gbin
 
 
                    
