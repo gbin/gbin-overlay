@@ -8,7 +8,7 @@ inherit games confutils
 
 DESCRIPTION="A programming environment for creating and sharing interactive stories, animations, games, music, and art."
 HOMEPAGE="http://scratch.mit.edu/"
-SRC_URI="http://info.scratch.mit.edu/sites/infoscratch.media.mit.edu/files/file/source-package/${P}.tar.gz"
+SRC_URI="http://download.scratch.mit.edu/${P}.src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,14 +16,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa oss pulseaudio v4l"
 
 DEPEND="
-	>=x11-libs/cairo-1.8.6
+	app-emulation/emul-linux-x86-squeak
+    >=x11-libs/cairo-1.8.6
 	>=x11-libs/pango-1.20.5
 	>=dev-libs/glib-2.20.1:2
 	v4l? ( >=media-libs/libv4l-0.5.8 )
 "
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/${P}.src"
+echo $S
 ABI="x86"
 
 if   use alsa;       then squeak_sound_plugin="ALSA"
@@ -78,8 +80,8 @@ install_runner() {
 #!/bin/sh
 cd
 exec \
-	"$(games_get_libdir)/${PN}/scratch_squeak_vm"     \\
-    -plugins "$(games_get_libdir)/${PN}/Plugins" \\
+	"/usr/local/bin/squeakvm"     \\
+    -plugins "/usr/lib32/squeak/:$(games_get_libdir)/${PN}/Plugins" \\
     -vm-sound-${squeak_sound_plugin}                  \\
 	"$(games_get_libdir)/${PN}/Scratch.image"    \\
     "${@}"
