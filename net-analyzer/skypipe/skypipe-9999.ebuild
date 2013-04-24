@@ -30,6 +30,3 @@ RDEPEND="virtual/python-argparse
     dev-python/colorama
 "
 
-src_prepare() {
-    epatch "${FILESDIR}"/unstatic-pyzmq-9999.patch
-}
