@@ -6,7 +6,7 @@ EAPI="3"
 PYTHON_DEPEND="2:2.6"
 SUPPORT_PYTHON_ABIS="1"
 
-inherit eutils git python
+inherit eutils git-2 python
 
 MY_PN="${PN/s/S}"
 MY_PN="${MY_PN/b/B}"
