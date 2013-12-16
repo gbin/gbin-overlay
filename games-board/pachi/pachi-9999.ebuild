@@ -5,6 +5,7 @@
 EAPI=5
 inherit games
 inherit git-2
+inherit eutils
 
 DESCRIPTION="Pachi Simple Go/Baduk/Weiqi Bot"
 HOMEPAGE="http://pachi.or.cz/"
@@ -13,6 +14,11 @@ EGIT_REPO_URI="git://repo.or.cz/pachi.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+
+src_prepare()
+{
+	epatch "${FILESDIR}/${PV}-makefile-fixup.patch"
+}
 
 src_install()
 {

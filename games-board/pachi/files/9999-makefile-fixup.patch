@@ -1,0 +1,13 @@
+--- Makefile.old	2013-12-15 22:36:43.470667934 -0800
++++ Makefile	2013-12-15 22:37:07.627666857 -0800
+@@ -67,8 +67,8 @@
+ 	LIBS=-lm -ldl $(CUSTOM_LIBS)
+ else
+ 	SYS_CFLAGS?=-march=native
+-	LDFLAGS?=-pthread -rdynamic
+-	LIBS?=-lm -lrt -ldl $(CUSTOM_LIBS)
++	LDFLAGS+=-pthread -rdynamic
++	LIBS+=-lm -lrt -ldl $(CUSTOM_LIBS)
+ endif
+ endif
+ 
