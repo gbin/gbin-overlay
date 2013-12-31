@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=4
 
-inherit git autotools-utils
+inherit git-2 autotools-utils
 
 DESCRIPTION="fuse-google-drive is a fuse filesystem wrapper for Google Drive"
 HOMEPAGE="https://github.com/jcline/fuse-google-drive/blob/master/README"
@@ -18,7 +18,7 @@ IUSE=""
 
 COMMON_DEPEND="sys-fs/fuse
 net-misc/curl
-dev-libs/json-c
+<dev-libs/json-c-0.10
 dev-libs/libxml2"
 
 RDEPEND="${COMMON_DEPEND}"
