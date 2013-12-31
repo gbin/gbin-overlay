@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=4
 
-inherit eutils git
+inherit eutils git-2
 
 EGIT_REPO_URI="git://github.com/andoma/tvheadend.git"
 
@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="avahi xmltv"
 
-#DEPEND="media-tv/linuxtv-dvb-headers" gbin: gni ? 
 DEPEND=""
 
 RDEPEND="${DEPEND}
