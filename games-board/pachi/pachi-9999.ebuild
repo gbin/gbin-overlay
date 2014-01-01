@@ -15,11 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_prepare()
-{
-	epatch "${FILESDIR}/${PV}-makefile-fixup.patch"
-}
-
 src_install()
 {
 	mkdir -p ${D}/usr/local/bin
